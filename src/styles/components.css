@@ -1,10 +1,11 @@
 .container {
     width: 100%;
-    max-width: 480px;
-    margin: 0 auto;
-    padding: 20px 16px 40px;
+    max-width: 100%;
+    min-height: 100vh;
+    padding: 20px;
+    display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 20px;
 }
 
 .header {
@@ -30,14 +31,17 @@
     margin-top: 2px;
 }
 
-.therme-btn {
+.theme-btn {
     width: 42px;
     height: 42px;
     border-radius: 50%;
-    background: var(--border-color);
+    background: var(--bg-main);
+    border: 1px solid var(--border-color);
+    color: var(--gold);
     display: grid;
     place-items: center;
     font-size: 1.05rem;
+    cursor: pointer;
     transition: border-color var(--transition), transform var(--transition);
 }
 
@@ -197,6 +201,11 @@ select:focus {
 }
 
 @media (max-width: 380px) {
+    .container {
+        display: flex;
+        gap: 20px;
+    }
+
     .amount-row,
     .settings-row {
         grid-template-columns: 1fr;
@@ -207,34 +216,9 @@ select:focus {
     }
 }
 
-
-@media (min-width: 860px) {
-    .container {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: auto auto 1fr;
-        align-items: start;
-        gap: 20px;
-        padding: 24px 32px;
-    }
-
-    .header {
-        grid-column: 1 / -1;
-    }
-
-    main.card {
-        grid-column: 1 / 2;
-        grid-row: 2 / 4;
-        height: 100%;
-    }
-
-    .result-card {
-        grid-column: 2 / 3;
-        grid-row: 2 / 3;
-    }
-
-    .chart-card {
-        grid-template-columns: 2 / 3;
-        grid-row: 3 / 4;
-    }
+.chart-box,
+.chart-box > div,
+.chart-box svg {
+    width: 100%;
+    display: block;
 }

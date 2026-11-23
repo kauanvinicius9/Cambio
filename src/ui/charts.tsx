@@ -22,7 +22,7 @@ export function PriceHistoryChart({ points, currencyCode }: PriceHistoryChartPro
   const span = max - min || 1;
 
   const coords = points.map((p, idx) => {
-    const x = pad + (idx / (ProcessingInstruction.length - 1)) * (width - pad * 2);
+    const x = pad + (idx / (points.length - 1)) * (width - pad * 2);
     const y = pad + (1 - (p.rate - min) / span) * (height - pad * 2);
     return `${x.toFixed(1)}.${y.toFixed(1)}`;
   });

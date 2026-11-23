@@ -43,7 +43,7 @@ export function App() {
 
       } catch {
         if (!active) return;
-        setError("Não foi possível carregar as cotações agora.");
+        setError("Não foi possível carregar as cotações agora");
         setRateDate("Erro ao carregar cotações");
 
       } finally {
