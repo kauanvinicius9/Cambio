@@ -136,6 +136,7 @@ Install dependencies:
 
 ```powershell
 npm install
+```
 
 Run development server
 
