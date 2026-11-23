@@ -50,4 +50,4 @@ deploy:
   steps:
     - name: Publicar no GitHub Pages
       id: deployment
-      uses: actions/deploy-páges@v4
+      uses: actions/deploy-pages@v4
