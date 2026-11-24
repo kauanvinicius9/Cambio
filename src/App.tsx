@@ -78,7 +78,9 @@ export function App() {
           <h1 className="title">Câmbio</h1>
           <p id="rate-date" className="subtitle">{rateDate}</p>
         </div>
-        <button type="button" id="theme-toggle" className="theme-btn" aria-label="Alternar tema" onClick={() => setTheme((prev) => (prev === "dark" ? "light" : "dark"))}>{theme === "dark" ? "☀" : "☾"}</button>
+        <button type="button" id="theme-toggle" className="theme-btn" aria-label="Alternar tema" onClick={() => setTheme((prev) => (prev === "dark" ? "light" : "dark"))}>
+          {theme === "dark" ? "☀" : "☾"}
+        </button>
       </header>
 
       {error && (

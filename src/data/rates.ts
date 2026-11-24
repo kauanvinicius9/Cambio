@@ -32,7 +32,12 @@ export async function fetchAllCurrencies(): Promise<WorldCurrency[]> {
   
   const data: Record<string, string> = await res.json();
 
-  return Object.entries(data) .filter(([code]) => code !== "BRL").map(([code, englishName]) => ({ code, name: getCurrencyNamePT(code, englishName) })).sort((a, b) => a.name.localeCompare(b.name, "pt-BR")); }
+  return Object.entries(data)
+    .filter(([code]) => code !== "BRL")
+    .map(([code, englishName]) => (
+      { code, name: getCurrencyNamePT(code, englishName) }
+    ))
+    .sort((a, b) => a.name.localeCompare(b.name, "pt-BR")); }
 
 // Busca todas as cotações atuais em relação ao BRL
 // Retorna um mapa onde o valor já está convertido para: Quantos BRL custa 1 unidade da moeda estrangeira

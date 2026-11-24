@@ -34,8 +34,13 @@ export function ConversorForm({ currencies, onChange }: ConversorFormProps) {
   return (
     <form className="form-grid" onSubmit={(e) => e.preventDefault()}>
       <div className="direction-toggle">
-        <button type="button" id="dir-foreign-to-brl" className={`dir-btn ${direction === "foreign_to_brl" ? "active" : ""}`} onClick={() => setDirection("foreign_to_brl")}>Comprar (Moeda → BRL)</button>
-        <button type="button" id="dir-brl-to-foreign" className={`dir-btn ${direction === "brl_to_foreign" ? "active" : ""}`} onClick={() => setDirection("brl_to_foreign")}>Reais (BRL → Moeda)</button>
+        <button type="button" id="dir-foreign-to-brl" className={`dir-btn ${direction === "foreign_to_brl" ? "active" : ""}`} onClick={() => setDirection("foreign_to_brl")}>
+          Comprar (Moeda → BRL)
+        </button>
+
+        <button type="button" id="dir-brl-to-foreign" className={`dir-btn ${direction === "brl_to_foreign" ? "active" : ""}`} onClick={() => setDirection("brl_to_foreign")}>
+          Reais (BRL → Moeda)
+        </button>
       </div>
 
       <div className="input-group">
