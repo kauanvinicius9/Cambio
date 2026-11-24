@@ -23,7 +23,7 @@ jobs:
 
       - name: Configurar Node.js
         uses: actions/setup-node@v4
-        width:
+        with:
           node-version: "22"
           cache: "npm"
 
@@ -38,7 +38,7 @@ jobs:
 
       - name: Upload do artefato (dist)
         uses: actions/upload-pages-artifact@v3
-        width:
+        with:
           path: "./dist"
 
 deploy:
