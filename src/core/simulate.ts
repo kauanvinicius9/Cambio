@@ -1,6 +1,8 @@
 import type { SimulationParams, SimulationResult } from "./types";
 
 const round2 = (n: number) => Math.round((n + Number.EPSILON) * 100) / 100;
+export const maxSafeSimulationAmount = 1e12 
+// Até 1 trilhão
 
 /**
  * Cálculo universal de câmbio BRL <-> Qualquer moeda
@@ -10,9 +12,10 @@ const round2 = (n: number) => Math.round((n + Number.EPSILON) * 100) / 100;
 
 export function calculateUniversalExchange( params: SimulationParams, commercialRateBrlPerUnit: number): SimulationResult {
     const { amount, direction, exchangeHouseSpread, iofPercent } = params;
+    const clampedAmount = Math.min(Math.max(amount, 0), maxSafeSimulationAmount);
     const effectiveRate = commercialRateBrlPerUnit *  (1 + exchangeHouseSpread / 100);
 
-    let sourceAmount = amount;
+    let sourceAmount = clampedAmount;
     let targetAmount = 0;
     let spreadAmountBRL = 0;
     let iofAmountBRL = 0;
@@ -42,4 +45,25 @@ export function calculateUniversalExchange( params: SimulationParams, commercial
         iofAmountBRL: round2(iofAmountBRL),
         totalBRL: round2(totalBRL),
     }
+}
+
+export function formatBRL(value: number): string {
+    if (!Number.isFinite(value)) return "Valor muito alto";
+
+    if (Math.abs(value) >= 1e12) {
+        return new Intl.NumberFormat("pt-BR", {
+            style: "currency",
+            currency: "BRL",
+            notation: "compact",
+            compactDisplay: "short",
+            maximumFractionDigits: 2,
+        }).format(value);
+    }
+
+    return new Intl.NumberFormat("pt-BR", {
+        style: "currency",
+        currency: "BRL",
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+    }).format(value);
 }
